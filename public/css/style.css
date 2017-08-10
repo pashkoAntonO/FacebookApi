@@ -1,0 +1,29 @@
+body{
+    background: #4682B4;
+
+}
+.wrapper{
+    background: #4682B4;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+.btn{
+    text-align: center;
+    display: block;
+
+}
+.link{
+    color: #FFFFFF;
+    text-decoration: none;
+}
+.link:hover{
+    color: #FFFFFF;
+    text-decoration: none;
+}
+.link:active{
+    color: #FFFFFF;
+    text-decoration: none;
+}
