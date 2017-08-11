@@ -12,17 +12,13 @@ use Facebook\FacebookRequest;
 use Facebook\FacebookSession;
 use Illuminate\Http\Response;
 
-class PostsController extends Controller
+class PostsController extends FacebookController
 {
     public function posts()
     {
         session_start();
-        $fb = new Facebook([
-            'app_id' => env('APP_ID'),
-            'app_secret' => env('APP_SECRET'),
-            'default_graph_version' => 'v2.10',
-        ]);
 
+        $fb = $this->getTokent();
 
         if (isset($_SESSION['facebook_access_token'])) {
             $accessToken = $_SESSION['facebook_access_token'];

@@ -8,9 +8,9 @@ use Facebook\Facebook;
 use Facebook\Exceptions\FacebookResponseException;
 use Facebook\Exceptions\FacebookSDKException;
 use Illuminate\View\View;
-
-
-class AuthController extends Controller
+use Illuminate\Http\RedirectResponse;
+use Facebook\Authentication\AccessToken;
+class AuthController extends FacebookController
 {
     public function getToken() : View
     {
@@ -25,7 +25,7 @@ class AuthController extends Controller
         return view('Facebook/Auth')->withLink($loginUrl);
     }
 
-    function setSession(): \Illuminate\Http\RedirectResponse
+    function setSession(): RedirectResponse
     {
 
         session_start();
@@ -62,7 +62,7 @@ class AuthController extends Controller
 
 
 
-    private function checkToken($helper) : \Facebook\Authentication\AccessToken
+    private function checkToken($helper) : AccessToken
     {
         if (isset($_GET['state'])) {
             $helper->getPersistentDataHandler()->set('state', $_GET['state']);
@@ -90,17 +90,17 @@ class AuthController extends Controller
         return $accessToken;
     }
 
-    function getTokent() : Facebook
-    {
-
-        $fb = new Facebook([
-            'app_id' => env('APP_ID'),
-            'app_secret' => env('APP_SECRET'),
-            'default_graph_version' => 'v2.10',
-        ]);
-
-        return $fb;
-    }
+//    function getTokent() : Facebook
+//    {
+//
+//        $fb = new Facebook([
+//            'app_id' => env('APP_ID'),
+//            'app_secret' => env('APP_SECRET'),
+//            'default_graph_version' => 'v2.10',
+//        ]);
+//
+//        return $fb;
+//    }
 
 }
 
